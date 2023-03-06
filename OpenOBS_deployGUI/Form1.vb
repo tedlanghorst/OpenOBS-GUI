@@ -168,6 +168,14 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub VersionSwitch(version As String)
+        Select Case version
+            Case "328"
+                BatteryPanel.Visible = True
+            Case "Iridium"
+                BatteryPanel.Visible = False
+        End Select
+    End Sub
 
     Private Sub LogText(str As String, Optional just As String = "left")
         Select Case just
@@ -191,8 +199,14 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub link328_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles link328.LinkClicked
         Dim url As String = "https://github.com/tedlanghorst/OpenOBS-328/"
+        Dim psi As New ProcessStartInfo(url) With {.UseShellExecute = True}
+        Process.Start(psi)
+    End Sub
+
+    Private Sub linkIridium_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkIridium.LinkClicked
+        Dim url As String = "https://github.com/tedlanghorst/OpenOBS-Iridium/"
         Dim psi As New ProcessStartInfo(url) With {.UseShellExecute = True}
         Process.Start(psi)
     End Sub

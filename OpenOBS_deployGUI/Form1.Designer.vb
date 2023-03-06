@@ -39,13 +39,17 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.tbSN = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.link328 = New System.Windows.Forms.LinkLabel()
         Me.cbBattery = New System.Windows.Forms.ComboBox()
         Me.tbCapacity = New System.Windows.Forms.TextBox()
         Me.lblCapacity = New System.Windows.Forms.Label()
         Me.lblBatteryConfig = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BatteryPanel = New System.Windows.Forms.Panel()
+        Me.linkIridium = New System.Windows.Forms.LinkLabel()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BatteryPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnSend
@@ -71,7 +75,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(23, 475)
+        Me.Label3.Location = New System.Drawing.Point(11, 83)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(157, 20)
         Me.Label3.TabIndex = 10
@@ -92,7 +96,7 @@ Partial Class Form1
         'tbBattery
         '
         Me.tbBattery.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.tbBattery.Location = New System.Drawing.Point(202, 472)
+        Me.tbBattery.Location = New System.Drawing.Point(174, 83)
         Me.tbBattery.Name = "tbBattery"
         Me.tbBattery.ReadOnly = True
         Me.tbBattery.Size = New System.Drawing.Size(90, 27)
@@ -102,7 +106,7 @@ Partial Class Form1
         '
         Me.dtpStartTime.Enabled = False
         Me.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpStartTime.Location = New System.Drawing.Point(246, 344)
+        Me.dtpStartTime.Location = New System.Drawing.Point(246, 350)
         Me.dtpStartTime.Name = "dtpStartTime"
         Me.dtpStartTime.ShowUpDown = True
         Me.dtpStartTime.Size = New System.Drawing.Size(78, 27)
@@ -112,7 +116,7 @@ Partial Class Form1
         '
         Me.dtpStartDate.Enabled = False
         Me.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpStartDate.Location = New System.Drawing.Point(143, 344)
+        Me.dtpStartDate.Location = New System.Drawing.Point(143, 350)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(97, 27)
         Me.dtpStartDate.TabIndex = 17
@@ -172,7 +176,7 @@ Partial Class Form1
         'tbSN
         '
         Me.tbSN.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.tbSN.Location = New System.Drawing.Point(106, 85)
+        Me.tbSN.Location = New System.Drawing.Point(101, 86)
         Me.tbSN.Name = "tbSN"
         Me.tbSN.ReadOnly = True
         Me.tbSN.Size = New System.Drawing.Size(71, 27)
@@ -183,34 +187,34 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(32, 89)
+        Me.Label1.Location = New System.Drawing.Point(23, 89)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(73, 20)
         Me.Label1.TabIndex = 22
         Me.Label1.Text = "Serial No."
         '
-        'LinkLabel1
+        'link328
         '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(7, 558)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(121, 20)
-        Me.LinkLabel1.TabIndex = 24
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "OpenOBS Github"
+        Me.link328.AutoSize = True
+        Me.link328.Location = New System.Drawing.Point(77, 558)
+        Me.link328.Name = "link328"
+        Me.link328.Size = New System.Drawing.Size(103, 20)
+        Me.link328.TabIndex = 24
+        Me.link328.TabStop = True
+        Me.link328.Text = "OpenOBS-328"
         '
         'cbBattery
         '
         Me.cbBattery.FormattingEnabled = True
         Me.cbBattery.Items.AddRange(New Object() {"2000 mAh Li-SOCL2", "800 mAh Li-ion", "Custom (3.3-5V)"})
-        Me.cbBattery.Location = New System.Drawing.Point(23, 438)
+        Me.cbBattery.Location = New System.Drawing.Point(11, 46)
         Me.cbBattery.Name = "cbBattery"
         Me.cbBattery.Size = New System.Drawing.Size(269, 28)
         Me.cbBattery.TabIndex = 27
         '
         'tbCapacity
         '
-        Me.tbCapacity.Location = New System.Drawing.Point(137, 505)
+        Me.tbCapacity.Location = New System.Drawing.Point(192, 116)
         Me.tbCapacity.Name = "tbCapacity"
         Me.tbCapacity.Size = New System.Drawing.Size(58, 27)
         Me.tbCapacity.TabIndex = 28
@@ -220,7 +224,7 @@ Partial Class Form1
         'lblCapacity
         '
         Me.lblCapacity.AutoSize = True
-        Me.lblCapacity.Location = New System.Drawing.Point(20, 508)
+        Me.lblCapacity.Location = New System.Drawing.Point(11, 116)
         Me.lblCapacity.Name = "lblCapacity"
         Me.lblCapacity.Size = New System.Drawing.Size(114, 20)
         Me.lblCapacity.TabIndex = 29
@@ -231,7 +235,7 @@ Partial Class Form1
         '
         Me.lblBatteryConfig.AutoSize = True
         Me.lblBatteryConfig.BackColor = System.Drawing.Color.Transparent
-        Me.lblBatteryConfig.Location = New System.Drawing.Point(20, 418)
+        Me.lblBatteryConfig.Location = New System.Drawing.Point(11, 13)
         Me.lblBatteryConfig.Name = "lblBatteryConfig"
         Me.lblBatteryConfig.Size = New System.Drawing.Size(149, 20)
         Me.lblBatteryConfig.TabIndex = 32
@@ -241,11 +245,43 @@ Partial Class Form1
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 120)
+        Me.PictureBox1.Location = New System.Drawing.Point(7, 131)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(366, 123)
         Me.PictureBox1.TabIndex = 23
         Me.PictureBox1.TabStop = False
+        '
+        'BatteryPanel
+        '
+        Me.BatteryPanel.Controls.Add(Me.lblBatteryConfig)
+        Me.BatteryPanel.Controls.Add(Me.lblCapacity)
+        Me.BatteryPanel.Controls.Add(Me.cbBattery)
+        Me.BatteryPanel.Controls.Add(Me.tbCapacity)
+        Me.BatteryPanel.Controls.Add(Me.Label3)
+        Me.BatteryPanel.Controls.Add(Me.tbBattery)
+        Me.BatteryPanel.Location = New System.Drawing.Point(12, 395)
+        Me.BatteryPanel.Name = "BatteryPanel"
+        Me.BatteryPanel.Size = New System.Drawing.Size(338, 160)
+        Me.BatteryPanel.TabIndex = 33
+        '
+        'linkIridium
+        '
+        Me.linkIridium.AutoSize = True
+        Me.linkIridium.Location = New System.Drawing.Point(186, 558)
+        Me.linkIridium.Name = "linkIridium"
+        Me.linkIridium.Size = New System.Drawing.Size(126, 20)
+        Me.linkIridium.TabIndex = 34
+        Me.linkIridium.TabStop = True
+        Me.linkIridium.Text = "OpenOBS-Iridium"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(12, 558)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(56, 20)
+        Me.Label4.TabIndex = 35
+        Me.Label4.Text = "Github:"
         '
         'Form1
         '
@@ -254,11 +290,10 @@ Partial Class Form1
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(816, 591)
-        Me.Controls.Add(Me.cbBattery)
-        Me.Controls.Add(Me.lblBatteryConfig)
-        Me.Controls.Add(Me.lblCapacity)
-        Me.Controls.Add(Me.tbCapacity)
-        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.linkIridium)
+        Me.Controls.Add(Me.BatteryPanel)
+        Me.Controls.Add(Me.link328)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbSN)
@@ -267,9 +302,7 @@ Partial Class Form1
         Me.Controls.Add(Me.dtpStartDate)
         Me.Controls.Add(Me.dtpInterval)
         Me.Controls.Add(Me.dtpStartTime)
-        Me.Controls.Add(Me.tbBattery)
         Me.Controls.Add(Me.serialLog)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cbContinuous)
         Me.Controls.Add(Me.btnConnect)
@@ -279,6 +312,8 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "OpenOBS-328"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BatteryPanel.ResumeLayout(False)
+        Me.BatteryPanel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -299,10 +334,14 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents tbSN As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents link_328 As LinkLabel
     Friend WithEvents cbBattery As ComboBox
     Friend WithEvents tbCapacity As TextBox
     Friend WithEvents lblCapacity As Label
     Friend WithEvents lblBatteryConfig As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BatteryPanel As Panel
+    Friend WithEvents linkIridium As LinkLabel
+    Friend WithEvents link328 As LinkLabel
+    Friend WithEvents Label4 As Label
 End Class
