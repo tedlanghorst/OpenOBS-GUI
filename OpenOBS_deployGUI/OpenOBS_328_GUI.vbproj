@@ -9,9 +9,15 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <ApplicationIcon>sensorIcon.ico</ApplicationIcon>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Users\Ted\Documents\GitHub\OpenOBS-GUI\bin\</OutputPath>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutputPath>C:\Users\Ted\Documents\GitHub\OpenOBS-328\deploy_GUI\bin\</OutputPath>
   </PropertyGroup>
 
@@ -22,6 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ArduinoUploader" Version="3.2.0" />
+    <PackageReference Include="IntelHexFormatReader" Version="2.2.3" />
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
   </ItemGroup>
 

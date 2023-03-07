@@ -1,12 +1,13 @@
-﻿Imports System.IO.SerialPort
+﻿
 Imports System.Diagnostics
 Imports System.Threading
+Imports ArduinoUploader
 
 Public Class Form1
     'battery variables
-    Const onCurrent = 6.7
+    Const onCurrent = 10.8
     Const offCurrent = 0.05
-    Const onTime = 1.15
+    Const onTime = 0.96
     Dim battery_mah = 2000
 
     Const textColumns = 45
@@ -32,7 +33,6 @@ Public Class Form1
         comPort.BaudRate = 250000
         comPort.DtrEnable = True 'force Arduino reset
     End Sub
-
 
     Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
         Dim currentTime As UInt32 = (DateTime.Now - #1970/1/1#).TotalSeconds
@@ -277,4 +277,41 @@ Public Class Form1
         tbBattery.Text = Format(battery_days, "0.0")
     End Sub
 
+    Private Sub btnHexSend_Click(sender As Object, e As EventArgs) Handles btnHexSend.Click
+        'check that a port is selected
+        Dim portName As String
+        If cbPorts.SelectedIndex > -1 Then
+            portName = cbPorts.SelectedItem
+        Else
+            LogText("Select a COM port", "center")
+            Exit Sub
+        End If
+
+        'disconnect from com port before trying to send hex.
+        If btnConnect.Text.Equals("Disconnect") Then
+            Timer1.Enabled = False
+            If comPort.IsOpen Then
+                comPort.Close()
+            End If
+            btnConnect.Text = "Connect"
+        End If
+
+
+        Dim fileName As String
+        Using dialog As New OpenFileDialog
+            dialog.Filter = "hex files (*.hex)|*.hex"
+            If dialog.ShowDialog() <> DialogResult.OK Then Return
+            fileName = dialog.FileName
+        End Using
+
+        Dim uploadOptions = New ArduinoSketchUploaderOptions()
+        uploadOptions.FileName = fileName
+        'uploadOptions.FileName = "C:\Users\Ted\Downloads\OpenOBS-328.ino_atmega328p_8000000L.hex"
+        uploadOptions.PortName = portName
+        uploadOptions.ArduinoModel = Hardware.ArduinoModel.NanoR3
+        Dim uploader = New ArduinoSketchUploader(uploadOptions)
+        LogText("Uploading hex file", "center")
+        uploader.UploadSketch()
+        LogText("Upload complete", "center")
+    End Sub
 End Class

@@ -48,6 +48,7 @@ Partial Class Form1
         Me.BatteryPanel = New System.Windows.Forms.Panel()
         Me.linkIridium = New System.Windows.Forms.LinkLabel()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnHexSend = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BatteryPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -56,7 +57,7 @@ Partial Class Form1
         '
         Me.btnSend.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnSend.Enabled = False
-        Me.btnSend.Location = New System.Drawing.Point(223, 85)
+        Me.btnSend.Location = New System.Drawing.Point(204, 84)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(127, 29)
         Me.btnSend.TabIndex = 0
@@ -65,7 +66,7 @@ Partial Class Form1
         '
         'btnConnect
         '
-        Me.btnConnect.Location = New System.Drawing.Point(209, 31)
+        Me.btnConnect.Location = New System.Drawing.Point(246, 30)
         Me.btnConnect.Name = "btnConnect"
         Me.btnConnect.Size = New System.Drawing.Size(89, 29)
         Me.btnConnect.TabIndex = 3
@@ -164,7 +165,7 @@ Partial Class Form1
         'cbPorts
         '
         Me.cbPorts.FormattingEnabled = True
-        Me.cbPorts.Location = New System.Drawing.Point(105, 32)
+        Me.cbPorts.Location = New System.Drawing.Point(22, 30)
         Me.cbPorts.Name = "cbPorts"
         Me.cbPorts.Size = New System.Drawing.Size(98, 28)
         Me.cbPorts.TabIndex = 20
@@ -187,7 +188,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(23, 89)
+        Me.Label1.Location = New System.Drawing.Point(22, 89)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(73, 20)
         Me.Label1.TabIndex = 22
@@ -283,6 +284,15 @@ Partial Class Form1
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "Github:"
         '
+        'btnHexSend
+        '
+        Me.btnHexSend.Location = New System.Drawing.Point(135, 30)
+        Me.btnHexSend.Name = "btnHexSend"
+        Me.btnHexSend.Size = New System.Drawing.Size(105, 29)
+        Me.btnHexSend.TabIndex = 36
+        Me.btnHexSend.Text = "Upload .HEX"
+        Me.btnHexSend.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -290,6 +300,7 @@ Partial Class Form1
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(816, 591)
+        Me.Controls.Add(Me.btnHexSend)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.linkIridium)
         Me.Controls.Add(Me.BatteryPanel)
@@ -344,4 +355,5 @@ Partial Class Form1
     Friend WithEvents linkIridium As LinkLabel
     Friend WithEvents link328 As LinkLabel
     Friend WithEvents Label4 As Label
+    Friend WithEvents btnHexSend As Button
 End Class
