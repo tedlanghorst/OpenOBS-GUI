@@ -5,6 +5,7 @@ Imports ArduinoUploader
 
 Public Class Form1
     'battery variables
+    Const continuousCurrent = 2.0
     Const onCurrent = 10.8
     Const offCurrent = 0.05
     Const onTime = 0.96
@@ -272,7 +273,15 @@ Public Class Form1
         If offTime < 0 Then
             offTime = 0
         End If
-        Dim averageConsumption_mA = ((onCurrent * onTime) + (offCurrent * offTime)) / (offTime + onTime) 'weighted average current draw
+
+        Dim averageConsumption_mA
+        If offTime > 5 Then
+            'weighted average current draw
+            averageConsumption_mA = ((onCurrent * onTime) + (offCurrent * offTime)) / (offTime + onTime)
+        Else
+            averageConsumption_mA = continuousCurrent
+        End If
+
         Dim battery_days = delayBattery_mAh / averageConsumption_mA / 24 + (delaySeconds / 3600 / 24)
         tbBattery.Text = Format(battery_days, "0.0")
     End Sub
