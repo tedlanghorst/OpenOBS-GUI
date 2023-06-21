@@ -138,10 +138,10 @@ Partial Class Form1
         'dtpInterval
         '
         Me.dtpInterval.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpInterval.Location = New System.Drawing.Point(214, 274)
+        Me.dtpInterval.Location = New System.Drawing.Point(224, 269)
         Me.dtpInterval.Name = "dtpInterval"
         Me.dtpInterval.ShowUpDown = True
-        Me.dtpInterval.Size = New System.Drawing.Size(78, 27)
+        Me.dtpInterval.Size = New System.Drawing.Size(104, 27)
         Me.dtpInterval.TabIndex = 15
         Me.dtpInterval.Value = New Date(1970, 1, 1, 0, 15, 0, 0)
         '
@@ -150,9 +150,9 @@ Partial Class Form1
         Me.cbContinuous.AutoSize = True
         Me.cbContinuous.Location = New System.Drawing.Point(26, 297)
         Me.cbContinuous.Name = "cbContinuous"
-        Me.cbContinuous.Size = New System.Drawing.Size(105, 24)
+        Me.cbContinuous.Size = New System.Drawing.Size(149, 24)
         Me.cbContinuous.TabIndex = 5
-        Me.cbContinuous.Text = "Continuous"
+        Me.cbContinuous.Text = "Continuous (1 Hz)"
         Me.cbContinuous.UseVisualStyleBackColor = True
         '
         'Label2
@@ -160,9 +160,9 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(23, 274)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(180, 20)
+        Me.Label2.Size = New System.Drawing.Size(195, 20)
         Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Sample Interval [HH:mm]:"
+        Me.Label2.Text = "Sample Interval [HH:mm:ss]:"
         '
         'cbPorts
         '

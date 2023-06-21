@@ -20,7 +20,7 @@ Public Class Form1
     Dim intervalSetting As Date
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpInterval.Format = DateTimePickerFormat.Custom
-        dtpInterval.CustomFormat = "HH:mm"
+        dtpInterval.CustomFormat = "HH:mm:ss"
         dtpStartTime.Format = DateTimePickerFormat.Custom
         dtpStartTime.CustomFormat = "HH:mm"
 
@@ -323,4 +323,5 @@ Public Class Form1
         uploader.UploadSketch()
         LogText("Upload complete", "center")
     End Sub
+
 End Class
