@@ -1,6 +1,8 @@
 ﻿
 Imports System.Diagnostics
 Imports System.Threading
+Imports System.Drawing
+Imports System.Windows.Forms
 Imports ArduinoUploader
 
 Public Class Form1
@@ -11,7 +13,7 @@ Public Class Form1
     Const onTime = 0.96
     Dim battery_mah = 2000
 
-    Const textColumns = 45
+    Const textColumns = 50
 
     'Dim WithEvents comPort As New IO.Ports.SerialPort
     Dim comPort As New IO.Ports.SerialPort
@@ -40,7 +42,16 @@ Public Class Form1
         Dim delayStart = GetDelaySeconds()
         Dim measureInterval = (dtpInterval.Value - #1970/1/1#).TotalSeconds
 
-        Dim settings = "SET," & currentTime & "," & measureInterval & "," & delayStart
+        ' Build the flags byte:
+        Dim measBitFlags As Byte = 0
+        If cbAmbientLight.Checked Then measBitFlags = measBitFlags Or 1 ' Bit 0
+        If cbBackscatter.Checked Then measBitFlags = measBitFlags Or 2 ' Bit 1
+        If cbPressure.Checked Then measBitFlags = measBitFlags Or 4 ' Bit 2
+        If cbTemperature.Checked Then measBitFlags = measBitFlags Or 8 ' Bit 3
+
+        Dim current As Integer = nudCurrent.Value
+
+        Dim settings = "SET," & currentTime & "," & measureInterval & "," & delayStart & "," & measBitFlags & "," & current
         SendMessage(settings)
 
     End Sub
@@ -98,12 +109,28 @@ Public Class Form1
 
         Dim StartIdx = message.IndexOf("$")
         Dim EndIdx = message.IndexOf("*")
+
+        ' Ensure valid positions and checksum length
         If StartIdx = -1 Or EndIdx = -1 Then
+            Return False ' Missing start or end markers
+        End If
+
+        ' Check if there are at least 2 characters after the asterisk for the checksum
+        If EndIdx + 3 > message.Length Then
+            Return False ' Not enough characters for checksum
+        End If
+
+        'Prevent negative length in substring
+        If EndIdx - StartIdx - 1 < 0 Then
             Return False
         End If
 
         Dim sentence = message.Substring(StartIdx + 1, EndIdx - StartIdx - 1)
-        Return GetChecksum(sentence).Equals(message.Substring(EndIdx + 1, 2))
+        Dim expectedChecksum As String = GetChecksum(sentence)
+        Dim providedChecksum As String = message.Substring(EndIdx + 1, 2)
+
+        ' Case-insensitive comparison
+        Return expectedChecksum.Equals(providedChecksum, StringComparison.OrdinalIgnoreCase)
     End Function
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
@@ -192,6 +219,7 @@ Public Class Form1
         End Select
 
     End Sub
+
 
     Private Sub cbPorts_DropDown(sender As Object, e As EventArgs) Handles cbPorts.DropDown
         cbPorts.Items.Clear()
